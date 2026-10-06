@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Felipe Pino Latorre</title>
+<meta name="description" content="Felipe Pino Latorre: administrador público e ingeniero comercial. Asesor parlamentario en el Senado de Chile. Estudios Asia-Pacífico y Latinoamérica.">
+<meta property="og:title" content="Felipe Pino Latorre">
+<meta property="og:description" content="Gestión pública, economía y relaciones Asia-Pacífico–Latinoamérica.">
+<meta property="og:url" content="https://felipepinolatorre.cl/">
+<meta property="og:type" content="profile">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23172A3A'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='%23EEF2F1' text-anchor='middle'%3EFP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* Layout: single column editorial page; the Pacific arc under the name is the one signature element. */
+  :root {
+    --bg: #F2F5F4;
+    --surface: #FFFFFF;
+    --ink: #172A3A;
+    --muted: #55656F;
+    --line: #C9D3D4;
+    --accent: #2C7563;
+    --arc: #2C7563;
+    --serif: "Spectral", Georgia, serif;
+    --sans: "Public Sans", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F1C26;
+      --surface: #152734;
+      --ink: #E6ECEB;
+      --muted: #9AABB2;
+      --line: #2B4150;
+      --accent: #6FC2AA;
+      --arc: #6FC2AA;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F1C26;
+    --surface: #152734;
+    --ink: #E6ECEB;
+    --muted: #9AABB2;
+    --line: #2B4150;
+    --accent: #6FC2AA;
+    --arc: #6FC2AA;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  /* Bilingual: show only the active language */
+  html[lang="es"] [lang="en"],
+  html[lang="en"] [lang="es"] { display: none !important; }
+
+  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.25rem; }
+  main section > * { max-width: 46rem; }
+
+  header.top {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    max-width: 68rem; margin: 0 auto; padding: 1.25rem 1.25rem 0;
+  }
+  .mark { font-family: var(--serif); font-size: 1.125rem; color: var(--ink); text-decoration: none; }
+  nav.links { display: flex; gap: 1.25rem; align-items: center; font-size: 0.9375rem; }
+  nav.links a { color: var(--muted); text-decoration: none; }
+  nav.links a:hover { color: var(--ink); }
+  .lang {
+    font: inherit; font-size: 0.875rem; color: var(--ink); background: transparent;
+    border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem 0.8rem; cursor: pointer;
+  }
+  .lang:hover { border-color: var(--ink); }
+  @media (max-width: 640px) { nav.links a { display: none; } }
+
+  .hero { max-width: 68rem; margin: 0 auto; padding: 3.5rem 1.25rem 2rem; }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.5rem, 7vw, 4.75rem); line-height: 1.02; letter-spacing: -0.02em;
+    margin: 0 0 1.25rem; max-width: 12ch; text-wrap: balance;
+  }
+  .hero .lede { font-size: 1.1875rem; color: var(--muted); max-width: 36rem; margin: 0; }
+  .pacific { margin-top: 2.5rem; width: 100%; max-width: 100%; height: auto; display: block; overflow: visible; }
+  .pacific .eq { stroke: var(--line); stroke-dasharray: 2 6; }
+  .pacific .route {
+    fill: none; stroke: var(--arc); stroke-width: 1.5;
+    stroke-dasharray: 1400; stroke-dashoffset: 1400;
+    animation: draw 2.4s cubic-bezier(.6,.1,.2,1) 0.3s forwards;
+  }
+  .pacific circle { fill: var(--arc); }
+  .pacific text { font-family: var(--sans); font-size: 13px; fill: var(--muted); }
+  .pacific text.place { font-family: var(--serif); font-size: 17px; fill: var(--ink); }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @media (max-width: 640px) {
+    .pacific text { font-size: 30px; }
+    .pacific text.place { font-size: 36px; }
+    .pacific .coord { display: none; }
+    .pacific circle { r: 9px; }
+    .pacific .route { stroke-width: 3; }
+  }
+  @media (prefers-reduced-motion: reduce) { .pacific .route { animation: none; stroke-dashoffset: 0; } }
+
+  main section { padding: 3rem 0; border-top: 1px solid var(--line); }
+  main section:first-child { border-top: 0; }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: 1.75rem; line-height: 1.2; margin: 0 0 1.25rem; text-wrap: balance; }
+  h3 { font-size: 1.0625rem; font-weight: 600; margin: 0; }
+  p { margin: 0 0 1rem; }
+  .muted { color: var(--muted); }
+
+  .interests { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .interests li { border: 1px solid var(--line); border-radius: 999px; padding: 0.25rem 0.85rem; font-size: 0.9375rem; }
+
+  .work { background: var(--surface); border-left: 3px solid var(--accent); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+  .work .meta { font-size: 0.9375rem; color: var(--muted); margin: 0.15rem 0 0.6rem; }
+  .work p:last-child { margin-bottom: 0; }
+
+  ol.timeline { list-style: none; margin: 0; padding: 0; }
+  ol.timeline li { padding: 0.85rem 0; border-top: 1px solid var(--line); }
+  ol.timeline li:first-child { border-top: 0; }
+  ol.timeline .inst { color: var(--muted); font-size: 0.9375rem; display: block; }
+
+  .contact-list { list-style: none; padding: 0; margin: 0; }
+  .contact-list li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; padding: 0.5rem 0; align-items: baseline; }
+  .contact-list .k { color: var(--muted); }
+  .contact-list .v { min-width: 0; overflow-wrap: anywhere; }
+  .copy {
+    font: inherit; font-size: 0.8125rem; margin-left: 0.6rem; padding: 0.15rem 0.6rem; cursor: pointer;
+    color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 999px;
+  }
+  .copy:hover { border-color: var(--ink); }
+
+  footer { padding: 2.5rem 0 3rem; font-size: 0.875rem; color: var(--muted); border-top: 1px solid var(--line); }
+  @media (max-width: 480px) {
+    .contact-list li { grid-template-columns: 1fr; gap: 0.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="mark" href="#">Felipe Pino Latorre</a>
+  <nav class="links" aria-label="Secciones">
+    <a href="#sobre-mi"><span lang="es">Sobre mí</span><span lang="en">About</span></a>
+    <a href="#investigacion"><span lang="es">Investigación</span><span lang="en">Research</span></a>
+    <a href="#experiencia"><span lang="es">Experiencia</span><span lang="en">Experience</span></a>
+    <a href="#contacto"><span lang="es">Contacto</span><span lang="en">Contact</span></a>
+    <button class="lang" type="button" id="langToggle" aria-label="Cambiar idioma / Switch language">
+      <span lang="es">English</span><span lang="en">Español</span>
+    </button>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Felipe Pino Latorre</h1>
+  <p class="lede" lang="es">Administrador público e ingeniero comercial. Trabajo en políticas públicas como asesor parlamentario en el Senado de Chile e investigo las relaciones entre Asia-Pacífico y Latinoamérica.</p>
+  <p class="lede" lang="en">Public administrator and business engineer. I work in public policy as a parliamentary advisor at the Senate of Chile and research relations between the Asia-Pacific and Latin America.</p>
+
+  <svg class="pacific" viewBox="0 0 1000 220" role="img" aria-labelledby="pacificTitle">
+    <title id="pacificTitle">Arco a través del océano Pacífico entre Tamsui, Taiwán, y Santiago, Chile</title>
+    <line class="eq" x1="0" y1="110" x2="1000" y2="110"/>
+    <text x="1000" y="100" text-anchor="end">0°</text>
+    <path class="route" d="M 80 48 C 380 -20, 640 250, 920 182"/>
+    <circle cx="80" cy="48" r="5"/>
+    <circle cx="920" cy="182" r="5"/>
+    <text class="place" x="40" y="14">Tamsui, Taiwán</text>
+    <text class="coord" x="96" y="74">25°10′N 121°26′E</text>
+    <text class="place" x="920" y="214" text-anchor="end">Santiago, Chile</text>
+    <text class="coord" x="905" y="160" text-anchor="end">33°27′S 70°40′W</text>
+  </svg>
+</section>
+
+<main class="wrap">
+
+  <section id="sobre-mi">
+    <h2><span lang="es">Sobre mí</span><span lang="en">About</span></h2>
+    <div lang="es">
+      <p>Soy Felipe Antonio Pino Latorre. Me formé en la Universidad Central de Chile, donde obtuve los títulos de Administrador Público e Ingeniero Comercial, y luego cursé la Maestría en Estudios Asia-Pacífico y Latinoamérica en la Universidad de Tamkang, Taiwán.</p>
+      <p>Hoy me desempeño como asesor parlamentario en el Senado de Chile, en el área de comunicación política. Mi trabajo une la práctica legislativa con una pregunta que me interesa investigar: cómo Chile y Latinoamérica pueden relacionarse mejor con las economías y sociedades de Asia-Pacífico.</p>
+    </div>
+    <div lang="en">
+      <p>I am Felipe Antonio Pino Latorre. I studied at Universidad Central de Chile, where I earned professional degrees in Public Administration and Business Engineering (Economics and Management), and then completed a Master's in Asia-Pacific and Latin American Studies at Tamkang University, Taiwan.</p>
+      <p>I currently serve as a parliamentary advisor at the Senate of Chile, in political communication. My work connects legislative practice with a question I want to research: how Chile and Latin America can build stronger ties with the economies and societies of the Asia-Pacific.</p>
+    </div>
+  </section>
+
+  <section id="investigacion">
+    <h2><span lang="es">Investigación</span><span lang="en">Research</span></h2>
+    <ul class="interests">
+      <li><span lang="es">Relaciones Asia-Pacífico–Latinoamérica</span><span lang="en">Asia-Pacific–Latin America relations</span></li>
+      <li><span lang="es">Políticas públicas</span><span lang="en">Public policy</span></li>
+      <li><span lang="es">Taiwán y Chile</span><span lang="en">Taiwan and Chile</span></li>
+    </ul>
+
+    <div class="work">
+      <h3><span lang="es">Tesis de magíster</span><span lang="en">Master's thesis</span></h3>
+      <p class="meta">Tamkang University</p>
+      <p><span lang="es">“[Título de la tesis]”. [Resumen breve en dos o tres líneas: qué preguntaste, cómo lo estudiaste y qué encontraste.]</span><span lang="en">“[Thesis title]”. [Short two- or three-line summary: your question, your approach and your findings.]</span></p>
+    </div>
+
+    <div class="work">
+      <h3><span lang="es">Artículo basado en la tesis</span><span lang="en">Article based on the thesis</span></h3>
+      <p class="meta"><span lang="es">En preparación</span><span lang="en">In preparation</span></p>
+    </div>
+
+    <p><span lang="es">Perfil ORCID:</span><span lang="en">ORCID profile:</span> <a href="https://orcid.org/0009-0008-9259-8690">0009-0008-9259-8690</a></p>
+  </section>
+
+  <section id="experiencia">
+    <h2><span lang="es">Experiencia</span><span lang="en">Experience</span></h2>
+    <div class="work">
+      <h3><span lang="es">Asesor parlamentario</span><span lang="en">Parliamentary advisor</span></h3>
+      <p class="meta"><span lang="es">Senado de Chile · Comunicación política</span><span lang="en">Senate of Chile · Political communication</span></p>
+      <p><span lang="es">[Describe en dos o tres líneas tus funciones: análisis de proyectos de ley, comisiones en las que apoyas, temas que trabajas.]</span><span lang="en">[Describe your role in two or three lines: bill analysis, committees you support, policy areas.]</span></p>
+    </div>
+  </section>
+
+  <section id="formacion">
+    <h2><span lang="es">Formación</span><span lang="en">Education</span></h2>
+    <ol class="timeline">
+      <li>
+        <h3><span lang="es">Maestría en Estudios Asia-Pacífico y Latinoamérica</span><span lang="en">Master's in Asia-Pacific and Latin American Studies</span></h3>
+        <span class="inst"><span lang="es">Universidad de Tamkang, Taiwán</span><span lang="en">Tamkang University, Taiwan</span></span>
+      </li>
+      <li>
+        <h3><span lang="es">Ingeniero Comercial</span><span lang="en">Business Engineering (Economics and Management)</span></h3>
+        <span class="inst">Universidad Central de Chile</span>
+      </li>
+      <li>
+        <h3><span lang="es">Administrador Público</span><span lang="en">Public Administration</span></h3>
+        <span class="inst">Universidad Central de Chile</span>
+      </li>
+    </ol>
+  </section>
+
+  <section id="contacto">
+    <h2><span lang="es">Contacto</span><span lang="en">Contact</span></h2>
+    <ul class="contact-list">
+      <li>
+        <span class="k"><span lang="es">Correo</span><span lang="en">Email</span></span>
+        <span class="v"><span id="mail">contacto@felipepinolatorre.cl</span><button class="copy" type="button" id="copyMail"><span lang="es">Copiar</span><span lang="en">Copy</span></button></span>
+      </li>
+      <li>
+        <span class="k">ORCID</span>
+        <span class="v"><a href="https://orcid.org/0009-0008-9259-8690">0009-0008-9259-8690</a></span>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Felipe Pino Latorre</div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    var browser = (navigator.language || 'es').toLowerCase();
+    var lang = saved || (browser.indexOf('es') === 0 ? 'es' : 'en');
+    root.lang = lang;
+    document.getElementById('langToggle').addEventListener('click', function () {
+      lang = root.lang === 'es' ? 'en' : 'es';
+      root.lang = lang;
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    });
+
+    var copyBtn = document.getElementById('copyMail');
+    var mail = document.getElementById('mail');
+    copyBtn.addEventListener('click', function () {
+      var done = function () {
+        var prev = copyBtn.innerHTML;
+        copyBtn.textContent = root.lang === 'es' ? 'Copiado' : 'Copied';
+        setTimeout(function () { copyBtn.innerHTML = prev; }, 1500);
+      };
+      var fallback = function () {
+        var r = document.createRange();
+        r.selectNodeContents(mail);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(mail.textContent).then(done, fallback);
+      } else { fallback(); }
+    });
+  })();
+</script>
+</body>
+</html>
