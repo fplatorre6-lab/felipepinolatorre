@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-  /* Layout: single column editorial page; the Pacific arc under the name is the one signature element. */
+  /* Layout: single column editorial page; the Pacific arc under the name is the one signature element. Two large buttons choose the area (academic / professional advisor). */
   :root {
     --bg: #F2F5F4;
     --surface: #FFFFFF;
@@ -53,7 +53,7 @@
   }
 
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 1rem; }
   body {
     margin: 0;
     background: var(--bg);
@@ -70,6 +70,12 @@
   html[lang="es"] [lang="en"],
   html[lang="en"] [lang="es"] { display: none !important; }
 
+  /* Views: with script, only the active view shows; without script, everything shows */
+  html[data-view] .view { display: none; }
+  html[data-view="home"] .view-home,
+  html[data-view="academico"] .view-academico,
+  html[data-view="asesoria"] .view-asesoria { display: block; }
+
   .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.25rem; }
   main section > * { max-width: 46rem; }
 
@@ -77,7 +83,9 @@
     display: flex; justify-content: space-between; align-items: center; gap: 1rem;
     max-width: 68rem; margin: 0 auto; padding: 1.25rem 1.25rem 0;
   }
-  .mark { font-family: var(--serif); font-size: 1.125rem; color: var(--ink); text-decoration: none; }
+  .mark { font-family: var(--serif); font-size: 1.125rem; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 0.7rem; }
+  .mono { flex: none; border-radius: 8px; outline: 1px solid var(--line); }
+  .foot-mark { display: flex; align-items: center; gap: 0.7rem; }
   nav.links { display: flex; gap: 1.25rem; align-items: center; font-size: 0.9375rem; }
   nav.links a { color: var(--muted); text-decoration: none; }
   nav.links a:hover { color: var(--ink); }
@@ -106,6 +114,7 @@
   .pacific circle.end { fill: var(--copper); }
   .pacific text { font-family: var(--sans); font-size: 13px; fill: var(--muted); }
   .pacific text.place { font-family: var(--serif); font-size: 17px; fill: var(--ink); }
+  .pacific text.place.cl { fill: var(--copper); }
   @keyframes draw { to { stroke-dashoffset: 0; } }
   @media (max-width: 640px) {
     .pacific text { font-size: 30px; }
@@ -116,8 +125,24 @@
   }
   @media (prefers-reduced-motion: reduce) { .pacific .route { animation: none; stroke-dashoffset: 0; } }
 
+  /* The two main buttons */
+  .areas {
+    max-width: 68rem; margin: 0 auto; padding: 0 1.25rem 2.5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .area {
+    font: inherit; color: var(--ink); text-align: left; cursor: pointer;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 4px;
+    padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; min-width: 0;
+  }
+  .area:hover { border-color: var(--ink); }
+  .area[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 -3px 0 var(--accent); }
+  .area .kicker { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .area .title { font-family: var(--serif); font-size: clamp(1.35rem, 3.2vw, 1.75rem); line-height: 1.2; text-wrap: balance; }
+  .area .more { font-size: 0.9375rem; color: var(--accent); margin-top: 0.25rem; }
+  @media (max-width: 640px) { .areas { grid-template-columns: 1fr; } }
+
   main section { padding: 3rem 0; border-top: 1px solid var(--line); }
-  main section:first-child { border-top: 0; }
   h2 { font-family: var(--serif); font-weight: 500; font-size: 1.75rem; line-height: 1.2; margin: 0 0 1.25rem; text-wrap: balance; }
   h3 { font-size: 1.0625rem; font-weight: 600; margin: 0; }
   p { margin: 0 0 1rem; }
@@ -129,11 +154,14 @@
   .work { background: var(--surface); border-left: 3px solid var(--accent); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
   .work .meta { font-size: 0.9375rem; color: var(--muted); margin: 0.15rem 0 0.6rem; }
   .work p:last-child { margin-bottom: 0; }
+  .work .go { display: inline-block; margin-top: 0.25rem; font-weight: 600; }
+  .work .interests { margin-bottom: 0; }
 
   ol.timeline { list-style: none; margin: 0; padding: 0; }
   ol.timeline li { padding: 0.85rem 0; border-top: 1px solid var(--line); }
   ol.timeline li:first-child { border-top: 0; }
   ol.timeline .inst { color: var(--muted); font-size: 0.9375rem; display: block; }
+  ol.timeline .thesis { margin-top: 0.4rem; max-width: 40rem; }
 
   .contact-list { list-style: none; padding: 0; margin: 0; }
   .contact-list li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; padding: 0.5rem 0; align-items: baseline; }
@@ -154,11 +182,11 @@
 <body>
 
 <header class="top">
-  <a class="mark" href="#">Felipe Pino Latorre</a>
+  <a class="mark" href="#" data-go="home"><svg class="mono" viewBox="0 0 64 64" width="32" height="32" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#172A3A"/><text x="32" y="40" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#EEF2F1" text-anchor="middle">FP</text><path d="M 14 50 Q 32 58 50 47" fill="none" stroke="#6FC2AA" stroke-width="2" stroke-linecap="round"/></svg><span>Felipe Pino Latorre</span></a>
   <nav class="links" aria-label="Secciones">
-    <a href="#sobre-mi"><span lang="es">Sobre mí</span><span lang="en">About</span></a>
-    <a href="#investigacion"><span lang="es">Investigación</span><span lang="en">Research</span></a>
-    <a href="#experiencia"><span lang="es">Experiencia</span><span lang="en">Experience</span></a>
+    <a href="#" data-go="home"><span lang="es">Inicio</span><span lang="en">Home</span></a>
+    <a href="#academico" data-go="academico"><span lang="es">Académico</span><span lang="en">Academic</span></a>
+    <a href="#asesoria" data-go="asesoria"><span lang="es">Asesoría</span><span lang="en">Advisory</span></a>
     <a href="#contacto"><span lang="es">Contacto</span><span lang="en">Contact</span></a>
     <button class="lang" type="button" id="langToggle" aria-label="Cambiar idioma / Switch language">
       <span lang="es">English</span><span lang="en">Español</span>
@@ -180,14 +208,27 @@
     <circle class="end" cx="920" cy="182" r="5"/>
     <text class="place" x="40" y="14">Tamsui, Taiwán</text>
     <text class="coord" x="96" y="74">25°10′N 121°26′E</text>
-    <text class="place" x="920" y="214" text-anchor="end">Santiago, Chile</text>
+    <text class="place cl" x="920" y="214" text-anchor="end">Santiago, Chile</text>
     <text class="coord" x="905" y="160" text-anchor="end">33°27′S 70°40′W</text>
   </svg>
 </section>
 
+<div class="areas" role="group" aria-label="Áreas de trabajo / Areas of work">
+  <button class="area" type="button" data-go="academico" aria-pressed="false">
+    <span class="kicker"><span lang="es">Investigación y formación</span><span lang="en">Research and education</span></span>
+    <span class="title"><span lang="es">Mi trabajo académico</span><span lang="en">My academic work</span></span>
+    <span class="more"><span lang="es">Ver investigación y formación →</span><span lang="en">See research and education →</span></span>
+  </button>
+  <button class="area" type="button" data-go="asesoria" aria-pressed="false">
+    <span class="kicker"><span lang="es">Políticas públicas</span><span lang="en">Public policy</span></span>
+    <span class="title"><span lang="es">Mi trabajo como asesor profesional</span><span lang="en">My work as a professional advisor</span></span>
+    <span class="more"><span lang="es">Ver experiencia y proyectos →</span><span lang="en">See experience and projects →</span></span>
+  </button>
+</div>
+
 <main class="wrap">
 
-  <section id="sobre-mi">
+  <section id="sobre-mi" class="view view-home">
     <h2><span lang="es">Sobre mí</span><span lang="en">About</span></h2>
     <div lang="es">
       <p>Soy Felipe Antonio Pino Latorre. Me formé en la Universidad Central de Chile, donde obtuve los títulos de Administrador Público e Ingeniero Comercial, y luego cursé la Maestría en Estudios Asia-Pacífico y Latinoamérica en la Universidad de Tamkang, Taiwán.</p>
@@ -199,7 +240,7 @@
     </div>
   </section>
 
-  <section id="investigacion">
+  <section id="investigacion" class="view view-academico">
     <h2><span lang="es">Investigación</span><span lang="en">Research</span></h2>
     <ul class="interests">
       <li><span lang="es">Relaciones Asia-Pacífico–Latinoamérica</span><span lang="en">Asia-Pacific–Latin America relations</span></li>
@@ -210,7 +251,8 @@
     <div class="work">
       <h3><span lang="es">Tesis de magíster</span><span lang="en">Master's thesis</span></h3>
       <p class="meta">Tamkang University</p>
-      <p><span lang="es">“[Título de la tesis]”. [Resumen breve en dos o tres líneas: qué preguntaste, cómo lo estudiaste y qué encontraste.]</span><span lang="en">“[Thesis title]”. [Short two- or three-line summary: your question, your approach and your findings.]</span></p>
+      <p><em>Chile’s Foreign Policy in Taiwan Under the “One China Principle”</em></p>
+      <p><span lang="es">En el marco de la política internacional y de sus diversos enfoques teóricos para analizar las relaciones internacionales bilaterales y multilaterales entre Estados, se presenta como caso de estudio un triángulo interactivo entre Chile, la República Popular China y Taiwán, bajo la presión del “Principio de Una Sola China”. La investigación busca explicar por qué Chile mantiene una relación no oficial sustantiva con Taiwán sin buscar el reconocimiento diplomático, pese a su alta dependencia del mercado chino, y se mantiene como país no alineado. El marco teórico considera el realismo, el neorrealismo, el liberalismo, el institucionalismo, el constructivismo y el fenómeno creciente del regionalismo abierto. La investigación examina diversos documentos oficiales del gobierno que explican la estrategia de la República de Chile frente a este triángulo interactivo.</span><span lang="en">Within the framework of international politics and its diverse theoretical approaches for analyzing bilateral and multilateral international relations between states, a case study is presented as an interactive triangle involving Chile, the People's Republic of China, and Taiwan. This occurs under the pressure of the “One China Principle.” The research aims to explain why Chile maintains a substantial unofficial relationship with Taiwan without pursuing diplomatic recognition, despite its high dependence on the Chinese market, and remains a non-aligned country. The theoretical framework considers realism, neorealism, liberalism, institutionalism, constructivism, and the growing phenomenon of open regionalism. The research examines various official government documents that explain the Republic of Chile’s strategy regarding this interactive triangle.</span></p>
     </div>
 
     <div class="work">
@@ -221,16 +263,7 @@
     <p><span lang="es">Perfil ORCID:</span><span lang="en">ORCID profile:</span> <a href="https://orcid.org/0009-0008-9259-8690">0009-0008-9259-8690</a></p>
   </section>
 
-  <section id="experiencia">
-    <h2><span lang="es">Experiencia</span><span lang="en">Experience</span></h2>
-    <div class="work">
-      <h3><span lang="es">Asesor parlamentario</span><span lang="en">Parliamentary advisor</span></h3>
-      <p class="meta"><span lang="es">Senado de Chile · Comunicación política</span><span lang="en">Senate of Chile · Political communication</span></p>
-      <p><span lang="es">[Describe en dos o tres líneas tus funciones: análisis de proyectos de ley, comisiones en las que apoyas, temas que trabajas.]</span><span lang="en">[Describe your role in two or three lines: bill analysis, committees you support, policy areas.]</span></p>
-    </div>
-  </section>
-
-  <section id="formacion">
+  <section id="formacion" class="view view-academico">
     <h2><span lang="es">Formación</span><span lang="en">Education</span></h2>
     <ol class="timeline">
       <li>
@@ -240,12 +273,38 @@
       <li>
         <h3><span lang="es">Ingeniero Comercial</span><span lang="en">Business Engineering (Economics and Management)</span></h3>
         <span class="inst">Universidad Central de Chile</span>
+        <span class="inst thesis"><span lang="es">Tesis: </span><span lang="en">Thesis (in Spanish): </span><em>Análisis de disponibilidad y características de los programas de fomento para la micro, pequeña y mediana empresa de la Corporación de Fomento de la Producción (CORFO)</em></span>
       </li>
       <li>
         <h3><span lang="es">Administrador Público</span><span lang="en">Public Administration</span></h3>
         <span class="inst">Universidad Central de Chile</span>
+        <span class="inst thesis"><span lang="es">Tesis: </span><span lang="en">Thesis (in Spanish): </span><em>El uso de información de desempeño en el proceso de discusión y aprobación de la Ley de presupuestos del año 2019: El caso del Plan Especial de Desarrollo de Zonas Extremas</em></span>
       </li>
     </ol>
+  </section>
+
+  <section id="experiencia" class="view view-asesoria">
+    <h2><span lang="es">Experiencia</span><span lang="en">Experience</span></h2>
+    <div class="work">
+      <h3><span lang="es">Asesor parlamentario</span><span lang="en">Parliamentary advisor</span></h3>
+      <p class="meta"><span lang="es">Senado de Chile · Comunicación política</span><span lang="en">Senate of Chile · Political communication</span></p>
+      <ul class="interests">
+        <li><span lang="es">Comunicación política</span><span lang="en">Political communication</span></li>
+        <li><span lang="es">Asesoría en políticas públicas</span><span lang="en">Public policy advisory</span></li>
+        <li><span lang="es">Finanzas públicas</span><span lang="en">Public finance</span></li>
+        <li><span lang="es">Economía</span><span lang="en">Economics</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="proyectos" class="view view-asesoria">
+    <h2><span lang="es">Proyectos</span><span lang="en">Projects</span></h2>
+    <div class="work">
+      <h3><span lang="es">Monitoreo Ley de Royalty · Arica y Parinacota</span><span lang="en">Royalty Law Monitor · Arica y Parinacota</span></h3>
+      <p class="meta"><span lang="es">Catastro público · Ley 21.591 · Fondo de Equidad Territorial</span><span lang="en">Public registry · Law 21.591 · Territorial Equity Fund</span></p>
+      <p><span lang="es">Un catastro público que sigue la implementación de la ley de royalty en la región de Arica y Parinacota. Se alimenta de las respuestas a solicitudes de información por Ley de Transparencia y se actualiza a medida que llegan. Cada registro indica su fecha de corte y su fuente, y un dato que falta no equivale a un cero.</span><span lang="en">A public registry that tracks how the royalty law is being implemented in the Arica y Parinacota region. It is built from answers to Transparency Law information requests and is updated as they arrive. Every record shows its cut-off date and its source, and a missing figure is not a zero.</span></p>
+      <a class="go" href="https://royalty.felipepinolatorre.cl"><span lang="es">Abrir el catastro →</span><span lang="en">Open the registry →</span></a>
+    </div>
   </section>
 
   <section id="contacto">
@@ -265,12 +324,14 @@
 </main>
 
 <footer>
-  <div class="wrap">© 2026 Felipe Pino Latorre</div>
+  <div class="wrap foot-mark"><svg class="mono" viewBox="0 0 64 64" width="24" height="24" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#172A3A"/><text x="32" y="40" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#EEF2F1" text-anchor="middle">FP</text><path d="M 14 50 Q 32 58 50 47" fill="none" stroke="#6FC2AA" stroke-width="2" stroke-linecap="round"/></svg><span>© 2026 Felipe Pino Latorre</span></div>
 </footer>
 
 <script>
   (function () {
     var root = document.documentElement;
+
+    /* Language */
     var saved = null;
     try { saved = localStorage.getItem('lang'); } catch (e) {}
     var browser = (navigator.language || 'es').toLowerCase();
@@ -282,6 +343,39 @@
       try { localStorage.setItem('lang', lang); } catch (e) {}
     });
 
+    /* Views: home, academico, asesoria */
+    var VIEWS = ['home', 'academico', 'asesoria'];
+    var buttons = document.querySelectorAll('.area');
+    function setView(view, scroll) {
+      if (VIEWS.indexOf(view) < 0) view = 'home';
+      root.setAttribute('data-view', view);
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].setAttribute('aria-pressed', buttons[i].getAttribute('data-go') === view ? 'true' : 'false');
+      }
+      if (scroll) {
+        var first = document.querySelector('.view-' + view);
+        if (first && first.scrollIntoView) {
+          try { first.scrollIntoView({ block: 'start' }); } catch (e) { first.scrollIntoView(); }
+        }
+      }
+    }
+    function fromHash() {
+      var h = (location.hash || '').replace('#', '');
+      return VIEWS.indexOf(h) >= 0 ? h : 'home';
+    }
+    setView(fromHash(), false);
+    document.addEventListener('click', function (ev) {
+      var el = ev.target.closest ? ev.target.closest('[data-go]') : null;
+      if (!el) return;
+      ev.preventDefault();
+      var view = el.getAttribute('data-go');
+      setView(view, view !== 'home');
+      try { history.replaceState(null, '', view === 'home' ? '#' : '#' + view); } catch (e) {}
+      if (view === 'home') window.scrollTo(0, 0);
+    });
+    window.addEventListener('hashchange', function () { setView(fromHash(), false); });
+
+    /* Copy email */
     var copyBtn = document.getElementById('copyMail');
     var mail = document.getElementById('mail');
     copyBtn.addEventListener('click', function () {
