@@ -9,46 +9,44 @@
 <meta property="og:description" content="Gestión pública, economía y relaciones Asia-Pacífico–Latinoamérica.">
 <meta property="og:url" content="https://felipepinolatorre.cl/">
 <meta property="og:type" content="profile">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23172A3A'/%3E%3Ctext x='32' y='40' font-family='Georgia,serif' font-size='28' fill='%23EEF2F1' text-anchor='middle'%3EFP%3C/text%3E%3Cpath d='M 14 50 Q 32 58 50 47' fill='none' stroke='%236FC2AA' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23B3262E'/%3E%3Crect x='5' y='5' width='54' height='54' rx='3' fill='none' stroke='%23FFFFFF' stroke-opacity='.6' stroke-width='1.5'/%3E%3Ctext x='32' y='41' font-family='Georgia,serif' font-size='26' font-weight='700' fill='%23FFFFFF' text-anchor='middle'%3EFP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  /* Layout: single column editorial page; the Pacific arc under the name is the one signature element. Two large buttons choose the area (academic / professional advisor). */
+  /* Layout: a nautical chart of the Pacific (Tamsui to Santiago) opens the page; two square buttons choose the area; red seal as the one recurring detail. */
   :root {
-    --bg: #F2F5F4;
+    --bg: #F4F6FA;
     --surface: #FFFFFF;
-    --ink: #172A3A;
-    --muted: #55656F;
-    --line: #C9D3D4;
-    --accent: #2C7563;
-    --arc: #2C7563;
-    --copper: #A84E29;
-    --serif: "Spectral", Georgia, serif;
-    --sans: "Public Sans", system-ui, sans-serif;
+    --ink: #101B3B;
+    --muted: #4B5775;
+    --line: #CBD2E1;
+    --accent: #1F3FA0;
+    --seal: #B3262E;
+    --serif: "Newsreader", Georgia, serif;
+    --sans: "Source Sans 3", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #0F1C26;
-      --surface: #152734;
-      --ink: #E6ECEB;
-      --muted: #9AABB2;
-      --line: #2B4150;
-      --accent: #6FC2AA;
-      --arc: #6FC2AA;
-      --copper: #E39A74;
+      --bg: #0B1226;
+      --surface: #121B38;
+      --ink: #E8ECF6;
+      --muted: #A3AECB;
+      --line: #28345C;
+      --accent: #8FA8FF;
+      --seal: #FF8A8F;
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #0F1C26;
-    --surface: #152734;
-    --ink: #E6ECEB;
-    --muted: #9AABB2;
-    --line: #2B4150;
-    --accent: #6FC2AA;
-    --arc: #6FC2AA;
-    --copper: #E39A74;
+    --bg: #0B1226;
+    --surface: #121B38;
+    --ink: #E8ECF6;
+    --muted: #A3AECB;
+    --line: #28345C;
+    --accent: #8FA8FF;
+    --seal: #FF8A8F;
     color-scheme: dark;
   }
 
@@ -83,15 +81,15 @@
     display: flex; justify-content: space-between; align-items: center; gap: 1rem;
     max-width: 68rem; margin: 0 auto; padding: 1.25rem 1.25rem 0;
   }
-  .mark { font-family: var(--serif); font-size: 1.125rem; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 0.7rem; }
-  .mono { flex: none; border-radius: 8px; outline: 1px solid var(--line); }
+  .mark { font-family: var(--serif); font-size: 1.1875rem; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 0.7rem; }
+  .seal { flex: none; display: block; }
   .foot-mark { display: flex; align-items: center; gap: 0.7rem; }
   nav.links { display: flex; gap: 1.25rem; align-items: center; font-size: 0.9375rem; }
   nav.links a { color: var(--muted); text-decoration: none; }
   nav.links a:hover { color: var(--ink); }
   .lang {
-    font: inherit; font-size: 0.875rem; color: var(--ink); background: transparent;
-    border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem 0.8rem; cursor: pointer;
+    font: inherit; font-family: var(--mono); font-size: 0.8125rem; color: var(--ink); background: transparent;
+    border: 1px solid var(--line); border-radius: 2px; padding: 0.3rem 0.75rem; cursor: pointer;
   }
   .lang:hover { border-color: var(--ink); }
   @media (max-width: 640px) { nav.links a { display: none; } }
@@ -99,31 +97,34 @@
   .hero { max-width: 68rem; margin: 0 auto; padding: 3.5rem 1.25rem 2rem; }
   .hero h1 {
     font-family: var(--serif); font-weight: 400;
-    font-size: clamp(2.5rem, 7vw, 4.75rem); line-height: 1.02; letter-spacing: -0.02em;
+    font-size: clamp(2.5rem, 7vw, 4.75rem); line-height: 1.02; letter-spacing: -0.015em;
     margin: 0 0 1.25rem; max-width: 12ch; text-wrap: balance;
   }
   .hero .lede { font-size: 1.1875rem; color: var(--muted); max-width: 36rem; margin: 0; }
-  .pacific { margin-top: 2.5rem; width: 100%; max-width: 100%; height: auto; display: block; overflow: visible; }
-  .pacific .eq { stroke: var(--line); stroke-dasharray: 2 6; }
-  .pacific .route {
-    fill: none; stroke: var(--arc); stroke-width: 1.5;
+
+  /* Chart of the Pacific: x = longitude 110°E to 60°W, y = latitude 30°N to 40°S */
+  .chart { margin-top: 2.5rem; width: 100%; max-width: 100%; height: auto; display: block; overflow: visible; }
+  .chart .frame { fill: var(--surface); stroke: var(--ink); stroke-width: 1; }
+  .chart .grat { stroke: var(--line); stroke-width: 1; }
+  .chart .eq { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 5; }
+  .chart .route {
+    fill: none; stroke: var(--accent); stroke-width: 2;
     stroke-dasharray: 1400; stroke-dashoffset: 1400;
     animation: draw 2.4s cubic-bezier(.6,.1,.2,1) 0.3s forwards;
   }
-  .pacific circle { fill: var(--arc); }
-  .pacific circle.end { fill: var(--copper); }
-  .pacific text { font-family: var(--sans); font-size: 13px; fill: var(--muted); }
-  .pacific text.place { font-family: var(--serif); font-size: 17px; fill: var(--ink); }
-  .pacific text.place.cl { fill: var(--copper); }
+  .chart .pt { fill: var(--surface); stroke: var(--accent); stroke-width: 2.5; }
+  .chart .pt.end { stroke: var(--seal); fill: var(--seal); }
+  .chart text { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+  .chart text.place { font-family: var(--serif); font-size: 18px; fill: var(--ink); }
+  .chart text.place.cl { fill: var(--seal); }
   @keyframes draw { to { stroke-dashoffset: 0; } }
   @media (max-width: 640px) {
-    .pacific text { font-size: 30px; }
-    .pacific text.place { font-size: 36px; }
-    .pacific .coord { display: none; }
-    .pacific circle { r: 9px; }
-    .pacific .route { stroke-width: 3; }
+    .chart text.place { font-size: 36px; }
+    .chart .tick, .chart .coord { display: none; }
+    .chart .pt { stroke-width: 5; r: 9px; }
+    .chart .route { stroke-width: 3.5; }
   }
-  @media (prefers-reduced-motion: reduce) { .pacific .route { animation: none; stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) { .chart .route { animation: none; stroke-dashoffset: 0; } }
 
   /* The two main buttons */
   .areas {
@@ -132,27 +133,31 @@
   }
   .area {
     font: inherit; color: var(--ink); text-align: left; cursor: pointer;
-    background: var(--surface); border: 1px solid var(--line); border-radius: 4px;
+    background: transparent; border: 1px solid var(--ink); border-radius: 0;
     padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; min-width: 0;
   }
-  .area:hover { border-color: var(--ink); }
-  .area[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 -3px 0 var(--accent); }
-  .area .kicker { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .area:hover { background: var(--surface); }
+  .area[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+  .area .kicker { font-family: var(--mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
   .area .title { font-family: var(--serif); font-size: clamp(1.35rem, 3.2vw, 1.75rem); line-height: 1.2; text-wrap: balance; }
   .area .more { font-size: 0.9375rem; color: var(--accent); margin-top: 0.25rem; }
+  .area[aria-pressed="true"] .kicker,
+  .area[aria-pressed="true"] .more { color: var(--bg); opacity: 0.85; }
   @media (max-width: 640px) { .areas { grid-template-columns: 1fr; } }
 
   main section { padding: 3rem 0; border-top: 1px solid var(--line); }
   h2 { font-family: var(--serif); font-weight: 500; font-size: 1.75rem; line-height: 1.2; margin: 0 0 1.25rem; text-wrap: balance; }
+  h2::before { content: ""; display: block; width: 2rem; height: 3px; background: var(--seal); margin-bottom: 0.9rem; }
   h3 { font-size: 1.0625rem; font-weight: 600; margin: 0; }
   p { margin: 0 0 1rem; }
   .muted { color: var(--muted); }
 
   .interests { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .interests li { border: 1px solid var(--line); border-radius: 999px; padding: 0.25rem 0.85rem; font-size: 0.9375rem; }
+  .interests li { border: 1px solid var(--line); border-radius: 2px; padding: 0.25rem 0.7rem; font-family: var(--mono); font-size: 0.8125rem; }
 
-  .work { background: var(--surface); border-left: 3px solid var(--accent); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
-  .work .meta { font-size: 0.9375rem; color: var(--muted); margin: 0.15rem 0 0.6rem; }
+  .work { background: var(--surface); border: 1px solid var(--line); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+  .work h3 { font-family: var(--serif); font-weight: 500; font-size: 1.25rem; line-height: 1.3; }
+  .work .meta { font-family: var(--mono); font-size: 0.8125rem; color: var(--muted); margin: 0.3rem 0 0.7rem; }
   .work p:last-child { margin-bottom: 0; }
   .work .go { display: inline-block; margin-top: 0.25rem; font-weight: 600; }
   .work .interests { margin-bottom: 0; }
@@ -160,16 +165,17 @@
   ol.timeline { list-style: none; margin: 0; padding: 0; }
   ol.timeline li { padding: 0.85rem 0; border-top: 1px solid var(--line); }
   ol.timeline li:first-child { border-top: 0; }
+  ol.timeline h3 { font-family: var(--serif); font-weight: 500; font-size: 1.25rem; line-height: 1.3; }
   ol.timeline .inst { color: var(--muted); font-size: 0.9375rem; display: block; }
   ol.timeline .thesis { margin-top: 0.4rem; max-width: 40rem; }
 
   .contact-list { list-style: none; padding: 0; margin: 0; }
   .contact-list li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; padding: 0.5rem 0; align-items: baseline; }
-  .contact-list .k { color: var(--muted); }
+  .contact-list .k { color: var(--muted); font-family: var(--mono); font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.06em; }
   .contact-list .v { min-width: 0; overflow-wrap: anywhere; }
   .copy {
-    font: inherit; font-size: 0.8125rem; margin-left: 0.6rem; padding: 0.15rem 0.6rem; cursor: pointer;
-    color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 999px;
+    font: inherit; font-family: var(--mono); font-size: 0.75rem; margin-left: 0.6rem; padding: 0.15rem 0.6rem; cursor: pointer;
+    color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 2px;
   }
   .copy:hover { border-color: var(--ink); }
 
@@ -181,8 +187,16 @@
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="seal" viewBox="0 0 64 64">
+    <rect width="64" height="64" rx="6" fill="#B3262E"/>
+    <rect x="5" y="5" width="54" height="54" rx="3" fill="none" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.5"/>
+    <text x="32" y="41" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">FP</text>
+  </symbol>
+</svg>
+
 <header class="top">
-  <a class="mark" href="#" data-go="home"><svg class="mono" viewBox="0 0 64 64" width="32" height="32" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#172A3A"/><text x="32" y="40" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#EEF2F1" text-anchor="middle">FP</text><path d="M 14 50 Q 32 58 50 47" fill="none" stroke="#6FC2AA" stroke-width="2" stroke-linecap="round"/></svg><span>Felipe Pino Latorre</span></a>
+  <a class="mark" href="#" data-go="home"><svg class="seal" width="32" height="32" aria-hidden="true"><use href="#seal"/></svg><span>Felipe Pino Latorre</span></a>
   <nav class="links" aria-label="Secciones">
     <a href="#" data-go="home"><span lang="es">Inicio</span><span lang="en">Home</span></a>
     <a href="#academico" data-go="academico"><span lang="es">Académico</span><span lang="en">Academic</span></a>
@@ -199,17 +213,37 @@
   <p class="lede" lang="es">Administrador público e ingeniero comercial. Trabajo en políticas públicas como asesor parlamentario en el Senado de Chile e investigo las relaciones entre Asia-Pacífico y Latinoamérica.</p>
   <p class="lede" lang="en">Public administrator and business engineer. I work in public policy as a parliamentary advisor at the Senate of Chile and research relations between the Asia-Pacific and Latin America.</p>
 
-  <svg class="pacific" viewBox="0 0 1000 220" role="img" aria-labelledby="pacificTitle">
-    <title id="pacificTitle">Arco a través del océano Pacífico entre Tamsui, Taiwán, y Santiago, Chile</title>
-    <line class="eq" x1="0" y1="110" x2="1000" y2="110"/>
-    <text x="1000" y="100" text-anchor="end">0°</text>
-    <path class="route" d="M 80 48 C 380 -20, 640 250, 920 182"/>
-    <circle cx="80" cy="48" r="5"/>
-    <circle class="end" cx="920" cy="182" r="5"/>
-    <text class="place" x="40" y="14">Tamsui, Taiwán</text>
-    <text class="coord" x="96" y="74">25°10′N 121°26′E</text>
-    <text class="place cl" x="920" y="214" text-anchor="end">Santiago, Chile</text>
-    <text class="coord" x="905" y="160" text-anchor="end">33°27′S 70°40′W</text>
+  <svg class="chart" viewBox="0 0 1000 250" role="img" aria-labelledby="chartTitle">
+    <title id="chartTitle">Carta del océano Pacífico con una ruta entre Tamsui, Taiwán, y Santiago, Chile</title>
+    <rect class="frame" x="40" y="40" width="920" height="180"/>
+    <!-- meridians every 30° from 120°E to 90°W -->
+    <line class="grat" x1="88.5" y1="40" x2="88.5" y2="220"/>
+    <line class="grat" x1="233.8" y1="40" x2="233.8" y2="220"/>
+    <line class="grat" x1="379" y1="40" x2="379" y2="220"/>
+    <line class="grat" x1="524.5" y1="40" x2="524.5" y2="220"/>
+    <line class="grat" x1="669.7" y1="40" x2="669.7" y2="220"/>
+    <line class="grat" x1="815" y1="40" x2="815" y2="220"/>
+    <!-- parallels: 30°N and 30°S, equator dashed -->
+    <line class="grat" x1="40" y1="194" x2="960" y2="194"/>
+    <line class="eq" x1="40" y1="117" x2="960" y2="117"/>
+    <g class="tick">
+      <text x="88.5" y="32" text-anchor="middle">120°E</text>
+      <text x="233.8" y="32" text-anchor="middle">150°E</text>
+      <text x="379" y="32" text-anchor="middle">180°</text>
+      <text x="524.5" y="32" text-anchor="middle">150°W</text>
+      <text x="669.7" y="32" text-anchor="middle">120°W</text>
+      <text x="815" y="32" text-anchor="middle">90°W</text>
+      <text x="34" y="44" text-anchor="end">30°N</text>
+      <text x="34" y="121" text-anchor="end">0°</text>
+      <text x="34" y="198" text-anchor="end">30°S</text>
+    </g>
+    <path class="route" d="M 95 52 C 360 20, 640 230, 908 203"/>
+    <circle class="pt" cx="95" cy="52" r="5"/>
+    <circle class="pt end" cx="908" cy="203" r="5"/>
+    <text class="place" x="112" y="78">Tamsui, Taiwán</text>
+    <text class="coord" x="112" y="96">25°10′N 121°26′E</text>
+    <text class="place cl" x="890" y="180" text-anchor="end">Santiago, Chile</text>
+    <text class="coord" x="890" y="198" text-anchor="end">33°27′S 70°40′W</text>
   </svg>
 </section>
 
@@ -324,7 +358,7 @@
 </main>
 
 <footer>
-  <div class="wrap foot-mark"><svg class="mono" viewBox="0 0 64 64" width="24" height="24" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#172A3A"/><text x="32" y="40" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#EEF2F1" text-anchor="middle">FP</text><path d="M 14 50 Q 32 58 50 47" fill="none" stroke="#6FC2AA" stroke-width="2" stroke-linecap="round"/></svg><span>© 2026 Felipe Pino Latorre</span></div>
+  <div class="wrap foot-mark"><svg class="seal" width="24" height="24" aria-hidden="true"><use href="#seal"/></svg><span>© 2026 Felipe Pino Latorre</span></div>
 </footer>
 
 <script>
