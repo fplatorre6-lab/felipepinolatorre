@@ -78,7 +78,7 @@
   main section > * { max-width: 46rem; }
 
   header.top {
-    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem 1rem;
     max-width: 68rem; margin: 0 auto; padding: 1.25rem 1.25rem 0;
   }
   .mark { font-family: var(--serif); font-size: 1.1875rem; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 0.7rem; }
@@ -92,7 +92,12 @@
     border: 1px solid var(--line); border-radius: 2px; padding: 0.3rem 0.75rem; cursor: pointer;
   }
   .lang:hover { border-color: var(--ink); }
-  @media (max-width: 640px) { nav.links a { display: none; } }
+  nav.links a.lin {
+    font-family: var(--mono); font-size: 0.8125rem; padding: 0.3rem 0.75rem;
+    background: var(--ink); color: var(--bg); border: 1px solid var(--ink); border-radius: 2px;
+  }
+  nav.links a.lin:hover { background: var(--surface); color: var(--ink); }
+  @media (max-width: 640px) { nav.links a:not(.lin) { display: none; } }
 
   .hero { max-width: 68rem; margin: 0 auto; padding: 3.5rem 1.25rem 2rem; }
   .hero h1 {
@@ -178,6 +183,12 @@
     color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 2px;
   }
   .copy:hover { border-color: var(--ink); }
+  .button {
+    display: inline-block; margin-top: 1.25rem; padding: 0.7rem 1.3rem;
+    background: var(--ink); color: var(--bg); border: 1px solid var(--ink); border-radius: 0;
+    font-weight: 600; text-decoration: none;
+  }
+  .button:hover { background: var(--surface); color: var(--ink); }
 
   footer { padding: 2.5rem 0 3rem; font-size: 0.875rem; color: var(--muted); border-top: 1px solid var(--line); }
   @media (max-width: 480px) {
@@ -202,6 +213,7 @@
     <a href="#academico" data-go="academico"><span lang="es">Académico</span><span lang="en">Academic</span></a>
     <a href="#asesoria" data-go="asesoria"><span lang="es">Asesoría</span><span lang="en">Advisory</span></a>
     <a href="#contacto"><span lang="es">Contacto</span><span lang="en">Contact</span></a>
+    <a class="lin" href="https://www.linkedin.com/in/felipe-pino-latorre" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <button class="lang" type="button" id="langToggle" aria-label="Cambiar idioma / Switch language">
       <span lang="es">English</span><span lang="en">Español</span>
     </button>
@@ -353,6 +365,7 @@
         <span class="v"><a href="https://orcid.org/0009-0008-9259-8690">0009-0008-9259-8690</a></span>
       </li>
     </ul>
+    <a class="button" href="https://www.linkedin.com/in/felipe-pino-latorre" target="_blank" rel="noopener noreferrer"><span lang="es">Ver mi perfil en LinkedIn →</span><span lang="en">View my LinkedIn profile →</span></a>
   </section>
 
 </main>
