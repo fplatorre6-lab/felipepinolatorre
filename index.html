@@ -72,7 +72,8 @@
   html[data-view] .view { display: none; }
   html[data-view="home"] .view-home,
   html[data-view="academico"] .view-academico,
-  html[data-view="asesoria"] .view-asesoria { display: block; }
+  html[data-view="asesoria"] .view-asesoria,
+  html[data-view="zofri"] .view-zofri { display: block; }
 
   .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.25rem; }
   main section > * { max-width: 46rem; }
@@ -189,6 +190,36 @@
     font-weight: 600; text-decoration: none;
   }
   .button:hover { background: var(--surface); color: var(--ink); }
+
+  /* Zofri monitor (view inside the site) */
+  #zofri > * { max-width: none; }
+  #zofri .zf-lede { max-width: 46rem; color: var(--muted); font-size: 1.125rem; }
+  #zofri .zf-back { display: inline-block; font-family: var(--mono); font-size: 0.8125rem; color: var(--muted); text-decoration: none; margin-bottom: 1.25rem; }
+  #zofri .zf-back:hover { color: var(--ink); }
+  .zf-cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); margin-bottom: 1rem; }
+  .zf-card { background: var(--surface); border: 1px solid var(--line); padding: 1.1rem 1.25rem; min-width: 0; }
+  .zf-k { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .zf-big { font-family: var(--serif); font-size: 2rem; line-height: 1.2; font-variant-numeric: tabular-nums; margin: 0.3rem 0; }
+  .zf-small { font-size: 0.875rem; color: var(--muted); margin: 0; }
+  #zofri .zf-note { color: var(--muted); font-size: 0.9375rem; max-width: 46rem; }
+  .zf-legend { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.875rem; color: var(--muted); margin: 0 0 0.5rem; }
+  .zf-legend i { display: inline-block; width: 0.75rem; height: 0.75rem; margin-right: 0.4rem; vertical-align: -1px; }
+  .zf-pub { background: var(--accent); }
+  .zf-est { background: color-mix(in srgb, var(--muted) 55%, var(--surface)); }
+  #zf-chart rect.zf-pub { fill: var(--accent); }
+  #zf-chart rect.zf-est { fill: color-mix(in srgb, var(--muted) 55%, var(--surface)); }
+  #zf-chart { position: relative; }
+  #zf-chart svg { display: block; width: 100%; height: auto; }
+  #zf-chart text { font-family: var(--sans); font-size: 13px; fill: var(--muted); }
+  #zf-chart text.val { fill: var(--ink); }
+  .zf-tip { position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--line); padding: 0.3rem 0.6rem; font-size: 0.8125rem; white-space: nowrap; opacity: 0; transition: opacity 0.1s; }
+  .zf-scroll { overflow-x: auto; }
+  #zofri table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; font-variant-numeric: tabular-nums; }
+  #zofri th { text-align: left; font-family: var(--mono); font-size: 0.75rem; font-weight: 500; color: var(--muted); padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  #zofri td { padding: 0.6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  #zofri .zf-num { text-align: right; }
+  #zofri .zf-block { margin-top: 2rem; }
+  #zofri .zf-block h3 { font-family: var(--serif); font-weight: 500; font-size: 1.375rem; margin-bottom: 0.3rem; }
 
   footer { padding: 2.5rem 0 3rem; font-size: 0.875rem; color: var(--muted); border-top: 1px solid var(--line); }
   @media (max-width: 480px) {
@@ -355,8 +386,47 @@
       <h3><span lang="es">Aporte Zofri a la Municipalidad de Arica</span><span lang="en">Zofri Contribution to the Municipality of Arica</span></h3>
       <p class="meta"><span lang="es">Seguimiento público · Ley 18.846 · Inversión municipal</span><span lang="en">Public tracker · Law 18.846 · Municipal investment</span></p>
       <p><span lang="es">Un seguimiento del aporte legal que Zofri S.A. entrega cada año a Arica, equivalente al 15 % de sus ingresos brutos y destinado solo a proyectos de inversión. Registra cuánto se recibe y qué se sabe de su destino. Un dato que falta no equivale a un cero.</span><span lang="en">A tracker of the statutory contribution that Zofri S.A. pays Arica each year, equal to 15% of its gross revenue and restricted to investment projects. It records how much is received and what is known about where it goes. A missing figure is not a zero.</span></p>
-      <a class="go" href="/zofri/"><span lang="es">Abrir el seguimiento →</span><span lang="en">Open the tracker →</span></a>
+      <a class="go" href="#zofri" data-go="zofri"><span lang="es">Abrir el seguimiento →</span><span lang="en">Open the tracker →</span></a>
     </div>
+  </section>
+
+  <section id="zofri" class="view view-zofri">
+    <a class="zf-back" href="#asesoria" data-go="asesoria"><span lang="es">← Proyectos</span><span lang="en">← Projects</span></a>
+    <h2><span lang="es">Aporte Zofri a la Municipalidad de Arica</span><span lang="en">Zofri Contribution to the Municipality of Arica</span></h2>
+    <p class="zf-lede"><span lang="es">Cada año, Zofri S.A. entrega a las comunas del extremo norte el 15 % de sus ingresos brutos. Esos fondos solo pueden usarse en proyectos de inversión y sus estudios. Este seguimiento registra cuánto recibe Arica y qué se sabe de su destino.</span><span lang="en">Each year, Zofri S.A. pays 15% of its gross revenue to the municipalities of the far north. The funds may only be used for investment projects and their studies. This tracker records how much Arica receives and what is known about where it goes.</span></p>
+
+    <div class="zf-cards">
+      <div class="zf-card"><div class="zf-k"><span lang="es">Último ejercicio con cifra</span><span lang="en">Latest fiscal year with a figure</span></div><div class="zf-big" id="zf-k1">—</div><p class="zf-small" id="zf-k1n"></p></div>
+      <div class="zf-card"><div class="zf-k"><span lang="es">Acumulado con cifra</span><span lang="en">Cumulative with a figure</span></div><div class="zf-big" id="zf-k2">—</div><p class="zf-small" id="zf-k2n"></p></div>
+      <div class="zf-card"><div class="zf-k"><span lang="es">Proyectos identificados</span><span lang="en">Identified projects</span></div><div class="zf-big" id="zf-k3">—</div><p class="zf-small"><span lang="es">Con gasto confirmado desde fuentes oficiales.</span><span lang="en">With spending confirmed from official sources.</span></p></div>
+    </div>
+
+    <div class="zf-block">
+      <h3><span lang="es">Aporte por ejercicio</span><span lang="en">Contribution by fiscal year</span></h3>
+      <p class="zf-note"><span lang="es">Millones de pesos. El aporte de cada ejercicio se paga el año siguiente. Cuando Zofri no publicó la cifra de Arica, se estima como dos tercios del total de las cuatro comunas (Arica recibe 20 de los 30 puntos del reparto).</span><span lang="en">Millions of Chilean pesos. Each fiscal year's contribution is paid the following year. When Zofri has not published Arica's figure, it is estimated as two thirds of the four-municipality total (Arica receives 20 of the 30 points of the split).</span></p>
+      <div class="zf-legend"><span><i class="zf-pub"></i><span lang="es">Cifra publicada</span><span lang="en">Published figure</span></span><span><i class="zf-est"></i><span lang="es">Estimado</span><span lang="en">Estimate</span></span></div>
+      <div id="zf-chart"></div>
+    </div>
+
+    <div class="zf-block">
+      <h3><span lang="es">En qué se gastó</span><span lang="en">Where it was spent</span></h3>
+      <p class="zf-note"><span lang="es">El municipio registra el aporte como ingreso general y sus informes trimestrales no rotulan ningún proyecto con esta fuente. Mientras no haya respuesta oficial, esta lista queda vacía en lugar de suponer un destino.</span><span lang="en">The municipality books the contribution as general revenue, and its quarterly reports do not label any project with this source. Until there is an official answer, this list stays empty rather than assuming a destination.</span></p>
+      <div class="zf-scroll"><table id="zf-t-proy" hidden><thead><tr><th><span lang="es">Ejercicio</span><span lang="en">Fiscal year</span></th><th><span lang="es">Proyecto</span><span lang="en">Project</span></th><th class="zf-num"><span lang="es">Monto</span><span lang="en">Amount</span></th><th><span lang="es">Estado</span><span lang="en">Status</span></th><th><span lang="es">Fuente</span><span lang="en">Source</span></th></tr></thead><tbody></tbody></table></div>
+      <p class="zf-note" id="zf-proy-empty"><span lang="es">Sin proyectos confirmados todavía.</span><span lang="en">No confirmed projects yet.</span></p>
+    </div>
+
+    <div class="zf-block">
+      <h3><span lang="es">Cifras y fuentes</span><span lang="en">Figures and sources</span></h3>
+      <div class="zf-scroll"><table id="zf-t-apo"><thead><tr><th><span lang="es">Ejercicio</span><span lang="en">Fiscal year</span></th><th><span lang="es">Pago</span><span lang="en">Paid</span></th><th class="zf-num">Arica</th><th class="zf-num"><span lang="es">Total 4 comunas</span><span lang="en">Total 4 municipalities</span></th><th><span lang="es">Fuente</span><span lang="en">Source</span></th></tr></thead><tbody></tbody></table></div>
+    </div>
+
+    <div class="zf-block">
+      <h3><span lang="es">Cómo se reparte por ley</span><span lang="en">How the law splits it</span></h3>
+      <p class="zf-note"><span lang="es">Artículo 12 de la Ley 18.846, en porcentaje del aporte total.</span><span lang="en">Article 12 of Law 18.846, as a percentage of the total contribution.</span></p>
+      <div class="zf-scroll"><table id="zf-t-rep"><thead><tr><th><span lang="es">Beneficiario</span><span lang="en">Recipient</span></th><th class="zf-num"><span lang="es">Porcentaje</span><span lang="en">Share</span></th></tr></thead><tbody></tbody></table></div>
+    </div>
+
+    <p class="zf-note zf-block"><span lang="es">Fuentes: <a href="https://www.anac.cl/wp-content/uploads/2017/08/ley_18846_zofri.pdf">Ley 18.846</a>, informes trimestrales de Control de la Municipalidad de Arica en <a href="https://transparencia.imaarica.cl">Transparencia Activa</a> y comunicados de Zofri S.A. recogidos por la prensa regional. Un dato que falta no equivale a un cero. Última actualización: <span class="zf-upd"></span>.</span><span lang="en">Sources: <a href="https://www.anac.cl/wp-content/uploads/2017/08/ley_18846_zofri.pdf">Law 18.846</a>, quarterly Control reports of the Municipality of Arica on <a href="https://transparencia.imaarica.cl">Transparencia Activa</a>, and Zofri S.A. statements as reported by the regional press. A missing figure is not a zero. Last updated: <span class="zf-upd"></span>.</span></p>
   </section>
 
   <section id="contacto">
@@ -396,8 +466,8 @@
       try { localStorage.setItem('lang', lang); } catch (e) {}
     });
 
-    /* Views: home, academico, asesoria */
-    var VIEWS = ['home', 'academico', 'asesoria'];
+    /* Views: home, academico, asesoria, zofri */
+    var VIEWS = ['home', 'academico', 'asesoria', 'zofri'];
     var buttons = document.querySelectorAll('.area');
     function setView(view, scroll) {
       if (VIEWS.indexOf(view) < 0) view = 'home';
@@ -448,6 +518,123 @@
         navigator.clipboard.writeText(mail.textContent).then(done, fallback);
       } else { fallback(); }
     });
+  })();
+</script>
+<script type="application/json" id="zf-data">
+{
+  "actualizado": "2026-10-09",
+  "aportes": [
+    {"ejercicio": 2022, "pago": 2023, "arica": 1287583186, "total4": 1931374780, "fuente_es": "Zofri S.A., vía Radio Primavera (jul 2023)", "fuente_en": "Zofri S.A., via Radio Primavera (Jul 2023)", "url": "https://radioprimavera.cl/zofri-anuncia-inversiones-en-parque-industrial-de-arica"},
+    {"ejercicio": 2023, "pago": 2024, "arica": 1355126435, "total4": null, "fuente_es": "Municipalidad de Arica, informe de Control IV trimestre 2024 (ingreso devengado)", "fuente_en": "Municipality of Arica, Control report Q4 2024 (accrued revenue)", "url": "https://transparencia.imaarica.cl/web/portal/2024/info-4-2024.pdf"},
+    {"ejercicio": 2024, "pago": 2025, "arica": 1335871073, "total4": null, "fuente_es": "Zofri S.A., vía FronteraNorte (feb 2025); coincide con el informe de Control II trimestre 2025", "fuente_en": "Zofri S.A., via FronteraNorte (Feb 2025); matches the Control report Q2 2025", "url": "https://www.fronteranorte.cl/2025/02/14/zofri-s-a-realiza-entrega-del-15-de-sus-ingresos-brutos-a-las-comunas-de-arica-y-parinacota/"},
+    {"ejercicio": 2025, "pago": 2026, "arica": null, "total4": 2065000000, "fuente_es": "Zofri S.A., vía Arica al día (feb 2026): más de este total para las cuatro comunas; el monto de Arica no se ha publicado", "fuente_en": "Zofri S.A., via Arica al día (Feb 2026): more than this total for the four municipalities; Arica's amount has not been published", "url": "https://www.aricaldia.cl/zofri-entrego-mas-de-2-mil-millones-a-las-comunas-de-la-region-en-ejercicio-del-15-no-es-solo-una-obligacion-legal-buscamos-mayor-presencia-territorial/"}
+  ],
+  "reparto": [
+    {"es": "Arica", "en": "Arica", "porcentaje": 20},
+    {"es": "Camarones, Putre y General Lagos (en conjunto)", "en": "Camarones, Putre and General Lagos (combined)", "porcentaje": 10},
+    {"es": "Iquique", "en": "Iquique", "porcentaje": 20},
+    {"es": "Alto Hospicio", "en": "Alto Hospicio", "porcentaje": 20},
+    {"es": "Provincia del Tamarugal (en conjunto)", "en": "Tamarugal Province (combined)", "porcentaje": 30}
+  ],
+  "proyectos": []
+}
+</script>
+<script>
+  /* Zofri monitor: data lives in #zf-data; to update, edit that JSON only. */
+  (function () {
+    var root = document.documentElement;
+    var D = JSON.parse(document.getElementById('zf-data').textContent);
+    var nfEs = new Intl.NumberFormat('es-CL'), nfEn = new Intl.NumberFormat('en-US');
+    var NS = 'http://www.w3.org/2000/svg';
+    var $ = function (id) { return document.getElementById(id); };
+    var bi = function (es, en) {
+      var f = document.createDocumentFragment();
+      [['es', es], ['en', en]].forEach(function (p) { var s = document.createElement('span'); s.lang = p[0]; s.textContent = p[1]; f.appendChild(s); });
+      return f;
+    };
+    var clp = function (v, nf) { return v == null ? '—' : '$' + nf.format(Math.round(v)); };
+    var set = function (el, frag) { el.replaceChildren(frag); };
+    var cell = function (tr, content, cls) { var td = document.createElement('td'); if (cls) td.className = cls; td.appendChild(typeof content === 'string' ? document.createTextNode(content) : content); tr.appendChild(td); return td; };
+    var TIPO = { publicado: ['publicado', 'published'], estimado: ['estimado', 'estimate'], 'sin dato': ['sin dato', 'no data'] };
+
+    var serie = D.aportes.map(function (a) {
+      if (a.arica != null) return { e: a.ejercicio, m: a.arica, t: 'publicado' };
+      if (a.total4 != null) return { e: a.ejercicio, m: Math.round(a.total4 * 2 / 3), t: 'estimado' };
+      return { e: a.ejercicio, m: null, t: 'sin dato' };
+    });
+    var con = serie.filter(function (s) { return s.m != null; });
+    var ult = con[con.length - 1];
+    var acum = con.reduce(function (s, r) { return s + r.m; }, 0);
+
+    function fill() {
+      var mm = function (v, nf, w) { return '$' + nf.format(Math.round(v / 1e6)) + ' ' + w; };
+      set($('zf-k1'), bi(ult ? mm(ult.m, nfEs, 'millones') : '—', ult ? mm(ult.m, nfEn, 'million') : '—'));
+      set($('zf-k1n'), ult ? bi('Ejercicio ' + ult.e + ' · ' + TIPO[ult.t][0], 'Fiscal year ' + ult.e + ' · ' + TIPO[ult.t][1]) : document.createDocumentFragment());
+      set($('zf-k2'), bi(mm(acum, nfEs, 'millones'), mm(acum, nfEn, 'million')));
+      set($('zf-k2n'), bi(con.length + ' ejercicios; incluye estimaciones.', con.length + ' fiscal years; includes estimates.'));
+      $('zf-k3').textContent = String(D.proyectos.length);
+      Array.prototype.forEach.call(document.querySelectorAll('.zf-upd'), function (e) { e.textContent = D.actualizado; });
+
+      var tb = $('zf-t-apo').tBodies[0]; tb.replaceChildren();
+      D.aportes.forEach(function (a) {
+        var tr = document.createElement('tr');
+        cell(tr, String(a.ejercicio)); cell(tr, String(a.pago));
+        cell(tr, clp(a.arica, nfEs), 'zf-num'); cell(tr, clp(a.total4, nfEs), 'zf-num');
+        var td = document.createElement('td'), l = document.createElement('a'); l.href = a.url;
+        l.appendChild(bi(a.fuente_es, a.fuente_en)); td.appendChild(l); tr.appendChild(td);
+        tb.appendChild(tr);
+      });
+      var tr2 = $('zf-t-rep').tBodies[0]; tr2.replaceChildren();
+      D.reparto.forEach(function (r) { var tr = document.createElement('tr'); cell(tr, bi(r.es, r.en)); cell(tr, r.porcentaje + ' %', 'zf-num'); tr2.appendChild(tr); });
+
+      var has = D.proyectos.length > 0;
+      $('zf-t-proy').hidden = !has; $('zf-proy-empty').hidden = has;
+      var tp = $('zf-t-proy').tBodies[0]; tp.replaceChildren();
+      D.proyectos.forEach(function (p) { var tr = document.createElement('tr'); cell(tr, String(p.ejercicio)); cell(tr, p.proyecto); cell(tr, clp(p.monto, nfEs), 'zf-num'); cell(tr, p.estado); cell(tr, p.fuente); tp.appendChild(tr); });
+    }
+
+    function chart() {
+      var box = $('zf-chart'); box.replaceChildren();
+      var W = box.clientWidth; if (!W) return;
+      var H = 260, pb = 30, pt = 30, n = serie.length, slot = W / n, bw = Math.min(slot * 0.55, 72);
+      var max = Math.max.apply(null, con.map(function (s) { return s.m; })) * 1.15;
+      var svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('role', 'img');
+      svg.setAttribute('aria-label', root.lang === 'es' ? 'Aporte de Zofri a Arica por ejercicio' : 'Zofri contribution to Arica by fiscal year');
+      var mk = function (name, attrs, text) { var e = document.createElementNS(NS, name); Object.keys(attrs).forEach(function (k) { e.setAttribute(k, attrs[k]); }); if (text != null) e.textContent = text; svg.appendChild(e); return e; };
+      mk('line', { x1: 0, x2: W, y1: H - pb, y2: H - pb, stroke: 'var(--line)' });
+      var tip = document.createElement('div'); tip.className = 'zf-tip';
+      serie.forEach(function (s, i) {
+        var cx = slot * i + slot / 2;
+        if (s.m == null) {
+          mk('rect', { x: cx - bw / 2, y: H - pb - 28, width: bw, height: 28, fill: 'none', stroke: 'var(--line)', 'stroke-dasharray': '4 3' });
+          mk('text', { x: cx, y: H - pb - 38, 'text-anchor': 'middle', lang: 'es' }, 'sin dato');
+          mk('text', { x: cx, y: H - pb - 38, 'text-anchor': 'middle', lang: 'en' }, 'no data');
+        } else {
+          var h = (H - pb - pt) * s.m / max, y = H - pb - h, est = s.t === 'estimado';
+          var r = mk('rect', { x: cx - bw / 2, y: y, width: bw, height: h, rx: 2, class: est ? 'zf-est' : 'zf-pub' });
+          var v = nfEs.format(Math.round(s.m / 1e6));
+          mk('text', { x: cx, y: y - 8, 'text-anchor': 'middle', class: 'val', lang: 'es' }, v + (est ? ' (est.)' : ''));
+          mk('text', { x: cx, y: y - 8, 'text-anchor': 'middle', class: 'val', lang: 'en' }, nfEn.format(Math.round(s.m / 1e6)) + (est ? ' (est.)' : ''));
+          r.addEventListener('mousemove', function (ev) {
+            var b = box.getBoundingClientRect(), es = root.lang === 'es', nf = es ? nfEs : nfEn;
+            tip.textContent = s.e + ' · ' + clp(s.m, nf) + ' (' + TIPO[s.t][es ? 0 : 1] + ')';
+            tip.style.left = Math.max(0, Math.min(ev.clientX - b.left + 12, b.width - tip.offsetWidth)) + 'px';
+            tip.style.top = Math.max(0, ev.clientY - b.top - 34) + 'px'; tip.style.opacity = 1;
+          });
+          r.addEventListener('mouseleave', function () { tip.style.opacity = 0; });
+        }
+        mk('text', { x: cx, y: H - 10, 'text-anchor': 'middle' }, String(s.e));
+      });
+      box.appendChild(svg); box.appendChild(tip);
+    }
+
+    fill();
+    var timer;
+    function show() { if (root.getAttribute('data-view') === 'zofri') chart(); }
+    new MutationObserver(show).observe(root, { attributes: true, attributeFilter: ['data-view', 'lang'] });
+    window.addEventListener('resize', function () { clearTimeout(timer); timer = setTimeout(show, 120); });
+    show();
   })();
 </script>
 </body>
