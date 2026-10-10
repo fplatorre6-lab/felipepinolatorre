@@ -1,0 +1,17 @@
+{
+  "actualizado": "2026-10-09",
+  "aportes": [
+    {"ejercicio": 2022, "pago": 2023, "arica": 1287583186, "total4": 1931374780, "fuente": "Zofri S.A., vía Radio Primavera (jul 2023)", "url": "https://radioprimavera.cl/zofri-anuncia-inversiones-en-parque-industrial-de-arica"},
+    {"ejercicio": 2023, "pago": 2024, "arica": 1355126435, "total4": null, "fuente": "Municipalidad de Arica, informe de Control IV trimestre 2024 (ingreso devengado)", "url": "https://transparencia.imaarica.cl/web/portal/2024/info-4-2024.pdf"},
+    {"ejercicio": 2024, "pago": 2025, "arica": 1335871073, "total4": null, "fuente": "Zofri S.A., vía FronteraNorte (feb 2025); coincide con el informe de Control II trimestre 2025", "url": "https://www.fronteranorte.cl/2025/02/14/zofri-s-a-realiza-entrega-del-15-de-sus-ingresos-brutos-a-las-comunas-de-arica-y-parinacota/"},
+    {"ejercicio": 2025, "pago": 2026, "arica": null, "total4": 2065000000, "fuente": "Zofri S.A., vía Arica al día (feb 2026): más de este total para las cuatro comunas; el monto de Arica no se ha publicado", "url": "https://www.aricaldia.cl/zofri-entrego-mas-de-2-mil-millones-a-las-comunas-de-la-region-en-ejercicio-del-15-no-es-solo-una-obligacion-legal-buscamos-mayor-presencia-territorial/"}
+  ],
+  "reparto": [
+    {"beneficiario": "Arica", "porcentaje": 20},
+    {"beneficiario": "Camarones, Putre y General Lagos (en conjunto)", "porcentaje": 10},
+    {"beneficiario": "Iquique", "porcentaje": 20},
+    {"beneficiario": "Alto Hospicio", "porcentaje": 20},
+    {"beneficiario": "Provincia del Tamarugal (en conjunto)", "porcentaje": 30}
+  ],
+  "proyectos": []
+}

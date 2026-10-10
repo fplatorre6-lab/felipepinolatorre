@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aporte Zofri a Arica · Felipe Pino Latorre</title>
+<meta name="description" content="Seguimiento público del aporte legal de Zofri S.A. a la Municipalidad de Arica y de en qué se gasta.">
+<meta property="og:title" content="Aporte Zofri a Arica">
+<meta property="og:description" content="Cuánto recibe Arica de Zofri cada año y qué se sabe de su destino.">
+<meta property="og:url" content="https://felipepinolatorre.cl/zofri/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23B3262E'/%3E%3Ctext x='32' y='41' font-family='Georgia,serif' font-size='26' font-weight='700' fill='%23FFFFFF' text-anchor='middle'%3EFP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F6FA; --surface: #FFFFFF; --ink: #101B3B; --muted: #4B5775; --line: #CBD2E1;
+    --accent: #1F3FA0; --seal: #B3262E; --est: #9AA6C4;
+    --serif: "Newsreader", Georgia, serif; --sans: "Source Sans 3", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #0B1226; --surface: #121B38; --ink: #E8ECF6; --muted: #A3AECB; --line: #28345C; --accent: #8FA8FF; --seal: #FF8A8F; --est: #5A6891; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.25rem; }
+  header.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem 0 0; }
+  .mark { font-family: var(--serif); font-size: 1.1875rem; color: var(--ink); text-decoration: none; }
+  .back { font-family: var(--mono); font-size: .8125rem; color: var(--muted); text-decoration: none; }
+  .back:hover { color: var(--ink); }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 5.5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.015em; margin: 2.5rem 0 1rem; text-wrap: balance; }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: 1.5rem; margin: 0 0 .25rem; }
+  .lede { color: var(--muted); font-size: 1.1875rem; max-width: 42rem; margin: 0 0 2rem; }
+  .note { color: var(--muted); font-size: .9375rem; margin: 0 0 1rem; max-width: 46rem; }
+  .cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); margin-bottom: 1.5rem; }
+  .card, .block { background: var(--surface); border: 1px solid var(--line); border-radius: 2px; padding: 1.25rem; }
+  .block { margin-bottom: 1.5rem; }
+  .k { font-family: var(--mono); font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .big { font-family: var(--serif); font-size: 2.25rem; line-height: 1.15; font-variant-numeric: tabular-nums; margin: .35rem 0; }
+  .small { font-size: .875rem; color: var(--muted); }
+  .legend { display: flex; gap: 1.25rem; flex-wrap: wrap; font-size: .875rem; color: var(--muted); margin-bottom: .5rem; }
+  .legend i { display: inline-block; width: .75rem; height: .75rem; margin-right: .4rem; vertical-align: -1px; }
+  #chart { position: relative; }
+  #chart svg { display: block; width: 100%; height: auto; }
+  .tip { position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--line); padding: .3rem .6rem; font-size: .8125rem; white-space: nowrap; opacity: 0; transition: opacity .1s; }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: .9375rem; font-variant-numeric: tabular-nums; }
+  th { text-align: left; font-family: var(--mono); font-size: .75rem; font-weight: 500; color: var(--muted); padding: .5rem .6rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  td { padding: .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .num { text-align: right; }
+  .empty { color: var(--muted); font-size: .9375rem; }
+  footer { border-top: 1px solid var(--line); margin-top: 2.5rem; padding: 1.5rem 0 3rem; color: var(--muted); font-size: .875rem; }
+  footer p { margin: 0 0 .5rem; max-width: 50rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="/">Felipe Pino Latorre</a>
+    <a class="back" href="/#proyectos">← Proyectos</a>
+  </header>
+
+  <main>
+    <h1>Aporte Zofri a la Municipalidad de Arica</h1>
+    <p class="lede">Cada año, Zofri S.A. entrega a las comunas del extremo norte el 15 % de sus ingresos brutos. Esos fondos solo pueden usarse en proyectos de inversión y sus estudios. Esta página registra cuánto recibe Arica y qué se sabe de su destino.</p>
+
+    <div class="cards">
+      <div class="card"><div class="k">Último ejercicio con cifra</div><div class="big" id="k-ultimo">—</div><div class="small" id="k-ultimo-n"></div></div>
+      <div class="card"><div class="k">Acumulado con cifra</div><div class="big" id="k-acum">—</div><div class="small" id="k-acum-n"></div></div>
+      <div class="card"><div class="k">Proyectos identificados</div><div class="big" id="k-proy">—</div><div class="small">Con gasto confirmado desde fuentes oficiales.</div></div>
+    </div>
+
+    <section class="block">
+      <h2>Aporte por ejercicio</h2>
+      <p class="note">Millones de pesos. El aporte de cada ejercicio se paga el año siguiente. Cuando Zofri no publicó la cifra de Arica, se estima como dos tercios del total de las cuatro comunas (Arica recibe 20 de los 30 puntos del reparto).</p>
+      <div class="legend"><span><i style="background:var(--accent)"></i>Cifra publicada</span><span><i style="background:var(--est)"></i>Estimado</span></div>
+      <div id="chart"></div>
+    </section>
+
+    <section class="block">
+      <h2>En qué se gastó</h2>
+      <p class="note">El municipio registra el aporte como ingreso general y sus informes trimestrales no rotulan ningún proyecto con esta fuente. Mientras no haya respuesta oficial, esta lista queda vacía en lugar de suponer un destino.</p>
+      <div class="scroll"><table id="t-proy" hidden><thead><tr><th>Ejercicio</th><th>Proyecto</th><th class="num">Monto</th><th>Estado</th><th>Fuente</th></tr></thead><tbody></tbody></table></div>
+      <p class="empty" id="proy-empty">Sin proyectos confirmados todavía.</p>
+    </section>
+
+    <section class="block">
+      <h2>Cifras y fuentes</h2>
+      <div class="scroll"><table id="t-apo"><thead><tr><th>Ejercicio</th><th>Pago</th><th class="num">Arica</th><th class="num">Total 4 comunas</th><th>Fuente</th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section class="block">
+      <h2>Cómo se reparte por ley</h2>
+      <p class="note">Artículo 12 de la Ley 18.846, en porcentaje del aporte total.</p>
+      <div class="scroll"><table id="t-rep"><thead><tr><th>Beneficiario</th><th class="num">Porcentaje</th></tr></thead><tbody></tbody></table></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Fuentes: <a href="https://www.anac.cl/wp-content/uploads/2017/08/ley_18846_zofri.pdf">Ley 18.846</a>, informes trimestrales de Control de la Municipalidad de Arica en <a href="https://transparencia.imaarica.cl">Transparencia Activa</a> y comunicados de Zofri S.A. recogidos por la prensa regional.</p>
+    <p>Un dato que falta no equivale a un cero. Cifras en pesos chilenos. Última actualización: <span id="actualizado">—</span>.</p>
+  </footer>
+</div>
+
+<noscript><div class="wrap"><p>Esta página necesita JavaScript para mostrar las cifras.</p></div></noscript>
+<script>
+(function () {
+  var nf = new Intl.NumberFormat('es-CL');
+  var clp = function (v) { return v == null ? '—' : '$' + nf.format(Math.round(v)); };
+  var mm = function (v) { return '$' + nf.format(Math.round(v / 1e6)) + ' millones'; };
+  var $ = function (id) { return document.getElementById(id); };
+  var cell = function (tr, text, cls) { var td = document.createElement('td'); if (cls) td.className = cls; td.textContent = text; tr.appendChild(td); return td; };
+
+  fetch('datos.json').then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
+    var serie = d.aportes.map(function (a) {
+      if (a.arica != null) return { e: a.ejercicio, m: a.arica, t: 'publicado' };
+      if (a.total4 != null) return { e: a.ejercicio, m: Math.round(a.total4 * 2 / 3), t: 'estimado' };
+      return { e: a.ejercicio, m: null, t: 'sin dato' };
+    });
+    var con = serie.filter(function (s) { return s.m != null; });
+    var ult = con[con.length - 1];
+    $('k-ultimo').textContent = ult ? mm(ult.m) : '—';
+    $('k-ultimo-n').textContent = ult ? 'Ejercicio ' + ult.e + ' · ' + ult.t : '';
+    $('k-acum').textContent = mm(con.reduce(function (s, r) { return s + r.m; }, 0));
+    $('k-acum-n').textContent = con.length + ' ejercicios; incluye estimaciones.';
+    $('k-proy').textContent = String(d.proyectos.length);
+    $('actualizado').textContent = d.actualizado;
+
+    var tb = $('t-apo').tBodies[0];
+    d.aportes.forEach(function (a) {
+      var tr = document.createElement('tr');
+      cell(tr, a.ejercicio); cell(tr, a.pago); cell(tr, clp(a.arica), 'num'); cell(tr, clp(a.total4), 'num');
+      var td = document.createElement('td'); var l = document.createElement('a'); l.href = a.url; l.textContent = a.fuente; td.appendChild(l); tr.appendChild(td);
+      tb.appendChild(tr);
+    });
+    var tr2 = $('t-rep').tBodies[0];
+    d.reparto.forEach(function (r) { var tr = document.createElement('tr'); cell(tr, r.beneficiario); cell(tr, r.porcentaje + ' %', 'num'); tr2.appendChild(tr); });
+
+    if (d.proyectos.length) {
+      $('t-proy').hidden = false; $('proy-empty').hidden = true;
+      d.proyectos.forEach(function (p) { var tr = document.createElement('tr'); cell(tr, p.ejercicio); cell(tr, p.proyecto); cell(tr, clp(p.monto), 'num'); cell(tr, p.estado); cell(tr, p.fuente); $('t-proy').tBodies[0].appendChild(tr); });
+    }
+
+    function chart() {
+      var box = $('chart'); box.replaceChildren();
+      var W = box.clientWidth || 320, H = 260, pb = 30, pt = 30;
+      var max = Math.max.apply(null, con.map(function (s) { return s.m; })) * 1.15;
+      var n = serie.length, slot = W / n, bw = Math.min(slot * 0.55, 72), NS = 'http://www.w3.org/2000/svg';
+      var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'Aporte de Zofri a Arica por ejercicio');
+      var mk = function (name, attrs, text) { var e = document.createElementNS(NS, name); Object.keys(attrs).forEach(function (k) { e.setAttribute(k, attrs[k]); }); if (text != null) e.textContent = text; svg.appendChild(e); return e; };
+      mk('line', { x1: 0, x2: W, y1: H - pb, y2: H - pb, stroke: 'var(--line)' });
+      var tip = document.createElement('div'); tip.className = 'tip';
+      serie.forEach(function (s, i) {
+        var cx = slot * i + slot / 2;
+        if (s.m == null) {
+          mk('rect', { x: cx - bw / 2, y: H - pb - 28, width: bw, height: 28, fill: 'none', stroke: 'var(--est)', 'stroke-dasharray': '4 3' });
+          mk('text', { x: cx, y: H - pb - 38, 'text-anchor': 'middle', fill: 'var(--muted)', 'font-size': 13 }, 'sin dato');
+        } else {
+          var h = (H - pb - pt) * s.m / max, y = H - pb - h;
+          var r = mk('rect', { x: cx - bw / 2, y: y, width: bw, height: h, rx: 2, fill: s.t === 'estimado' ? 'var(--est)' : 'var(--accent)' });
+          mk('text', { x: cx, y: y - 8, 'text-anchor': 'middle', fill: 'var(--ink)', 'font-size': 13 }, nf.format(Math.round(s.m / 1e6)) + (s.t === 'estimado' ? ' (est.)' : ''));
+          r.addEventListener('mousemove', function (ev) {
+            var b = box.getBoundingClientRect();
+            tip.textContent = s.e + ' · ' + clp(s.m) + ' (' + s.t + ')';
+            tip.style.left = Math.max(0, Math.min(ev.clientX - b.left + 12, b.width - tip.offsetWidth)) + 'px';
+            tip.style.top = Math.max(0, ev.clientY - b.top - 34) + 'px'; tip.style.opacity = 1;
+          });
+          r.addEventListener('mouseleave', function () { tip.style.opacity = 0; });
+        }
+        mk('text', { x: cx, y: H - 10, 'text-anchor': 'middle', fill: 'var(--muted)', 'font-size': 13 }, s.e);
+      });
+      box.appendChild(svg); box.appendChild(tip);
+    }
+    chart();
+    var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(chart, 120); });
+  }).catch(function () {
+    $('chart').textContent = 'No se pudieron cargar los datos.';
+  });
+})();
+</script>
+</body>
+</html>
